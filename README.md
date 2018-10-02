@@ -22,7 +22,7 @@
 
 ### Windows:
 
-1. Download the [youtube-dl.exe](https://yt-dl.org/latest/youtube-dl.exe) file and place it in your cloned directory
+1. Clone and extract the repository
 
 2. Run the ytd.py file
 
