@@ -13,12 +13,18 @@ def get_title(url):
     title = str(website).split('<title>')[1].split('</title>')[0]
     return title
 
+def screen_clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 def init_message():
-    print("Enter the name of the song or the URL (^^):")
+    print("Hey there! (^^):")
 
 def download(song=None):
     if not song:
-        song = user_input('Enter the name of the song or the URL')
+        song = user_input('Enter the name of the song or the URL: ')
 
     if "youtube.com/" not in song:
 
@@ -30,4 +36,30 @@ def download(song=None):
             print("There's some problem in your network")
             return none
 
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" ' + search_results[0]
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" ' + results[0]
+
+    else:
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" ' + song[song.find("=")+1:]
+        song = get_title(song)
+        print(song)
+
+    try:
+        print("Downloading %s" % song)
+        os.system(command)
+        download()
+    except:
+        print('Error downloading %s' %song)
+        return None
+
+def main():
+    try:
+        screen_clear()
+        init_message()
+        download()
+    except KeyboardInterrupt:
+        exit(1)
+
+
+if __name__ == '__main__':
+    main()
+    exit(0)
