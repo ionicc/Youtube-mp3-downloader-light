@@ -20,7 +20,12 @@ def screen_clear():
         os.system('clear')
 
 def init_message():
-    print("Hey there! (^^):")
+    print("Built with <3 By Sagar Vakkala (^^) \n")
+    print("YOUTUBE MP3 DOWNLOADER LIGHT \n \n")
+
+def exit_message(t):
+    print("\n %s Has been downloaded" % t)
+
 
 def download(song=None):
     if not song:
@@ -46,6 +51,7 @@ def download(song=None):
     try:
         print("Downloading %s" % song)
         os.system(command)
+        exit_message(song)
         download()
     except:
         print('Error downloading %s' %song)
