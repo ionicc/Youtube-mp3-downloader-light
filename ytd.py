@@ -1,12 +1,22 @@
 import re, urllib, os, sys
 import urllib.request
 import urllib.parse
+import argparse
 
 user_input = input
 encode = urllib.parse.urlencode
 retrieve = urllib.request.urlretrieve
 cleanup = urllib.request.urlcleanup()
 urlopen = urllib.request.urlopen
+
+def check_args(args=None):
+    parser = argparse.ArgumentParser(description="YOUTUBE MP3 DOWNLOADER LIGHT")
+    parser.add_argument('--output', '-o',
+                        metavar='PATH',
+                        default='downloads/',
+                        help="Path to write downloads to")
+    return parser.parse_args(args)
+
 
 def get_title(url):
     website = urlopen(url).read()
@@ -27,7 +37,7 @@ def exit_message(t):
     print("\n %s Has been downloaded" % t)
 
 
-def download(song=None, folder_path='downloads/'):
+def download(song=None, folder_path=None):
     if not song:
         song = user_input('Enter the name of the song or the URL: ')
 
@@ -41,10 +51,10 @@ def download(song=None, folder_path='downloads/'):
             print("There's some problem in your network")
             return None
 
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}%(title)s.%(ext)s" '.format(folder_path) + results[0]
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}/%(title)s.%(ext)s" '.format(os.path.normpath(folder_path)) + results[0]
 
     else:
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}%(title)s.%(ext)s" '.format(folder_path) + song[song.find("=")+1:]
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}/%(title)s.%(ext)s" '.format(os.path.normpath(folder_path)) + song[song.find("=")+1:]
         song = get_title(song)
         print(song)
 
@@ -52,16 +62,17 @@ def download(song=None, folder_path='downloads/'):
         print("Downloading %s" % song)
         os.system(command)
         exit_message(song)
-        download()
     except:
         print('Error downloading %s' %song)
         return None
 
 def main():
+    path = check_args(sys.argv[1:]).output
     try:
         screen_clear()
         init_message()
-        download()
+        while True:
+            download(folder_path=path)
     except KeyboardInterrupt:
         exit(1)
 
