@@ -27,7 +27,7 @@ def exit_message(t):
     print("\n %s Has been downloaded" % t)
 
 
-def download(song=None):
+def download(song=None, folder_path='downloads/'):
     if not song:
         song = user_input('Enter the name of the song or the URL: ')
 
@@ -39,12 +39,12 @@ def download(song=None):
             results = re.findall(r'href=\"\/watch\?v=(.{11})', web_content.read().decode())
         except:
             print("There's some problem in your network")
-            return none
+            return None
 
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" ' + results[0]
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}%(title)s.%(ext)s" '.format(folder_path) + results[0]
 
     else:
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" ' + song[song.find("=")+1:]
+        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}%(title)s.%(ext)s" '.format(folder_path) + song[song.find("=")+1:]
         song = get_title(song)
         print(song)
 
