@@ -33,6 +33,8 @@ def check_args(args=None, default=None):
                         help="Path to write downloads to")
     parser.add_argument('--default', '-d',
                         help="Set default download directory")
+    parser.add_argument('--video', '-v',
+                        help="Directly download video, without further CLI interactions")
     return parser.parse_args(args)
 
 
@@ -92,8 +94,11 @@ def main():
     config_default = config_settings(new_path=default_path)
     path = check_args(sys.argv[1:], default=config_default).output
     try:
-        while True:
-            download(folder_path=path)
+        if check_args(sys.argv[1:]).video:
+            download(song=check_args(sys.argv[1:]).video, folder_path=path)
+        else:
+            while True:
+                download(folder_path=path)
     except KeyboardInterrupt:
         exit(1)
 
