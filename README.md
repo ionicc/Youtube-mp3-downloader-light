@@ -29,6 +29,11 @@
    ```
    .\ytd.py
    ```
+   
+### Specifying output directory
+
+Call ytd.py with `--output` or `-o` and specify a directory. 
+Anything downloaded during the session will be stored in that directory.
 
    
 
