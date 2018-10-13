@@ -1,6 +1,6 @@
 # Youtube mp3 downloader ~~ Light
 
-**YTDL is a python script to download songs from Youtube:heart:, It has been written in under 70 lines of code! :triumph:**
+**YTDL is a python script to download songs from  Youtube            :heart:   , It has been written in under 70 lines of code! :triumph:**
 
 ## Usage
 
