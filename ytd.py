@@ -2,19 +2,39 @@ import re, urllib, os, sys
 import urllib.request
 import urllib.parse
 import argparse
+import os, json
 
 user_input = input
 encode = urllib.parse.urlencode
 retrieve = urllib.request.urlretrieve
 cleanup = urllib.request.urlcleanup()
 urlopen = urllib.request.urlopen
+config_file_path = "config.json" # using a JSON file for simplicity, but it can
+                                 # easly changed to an .ini file
 
-def check_args(args=None):
+def config_settings(new_path=None):
+    # create a new config file
+    if new_path:
+        with open(config_file_path, "w") as config_file:
+            json.dump({"default": new_path}, config_file)
+            print("\033[93mDefault path changed to", new_path + "\033[0m") # remove ANSI escape to remove warning color
+            return new_path
+    elif os.path.isfile(config_file_path):
+        with open(config_file_path, "r") as config_file:
+            json_config = json.load(config_file)
+            if "default" in json_config:
+                return json_config["default"]
+
+def check_args(args=None, default=None):
     parser = argparse.ArgumentParser(description="YOUTUBE MP3 DOWNLOADER LIGHT")
     parser.add_argument('--output', '-o',
                         metavar='PATH',
-                        default='downloads/',
+                        default=default or 'downloads/',
                         help="Path to write downloads to")
+    parser.add_argument('--default', '-d',
+                        help="Set default download directory")
+    parser.add_argument('--video', '-v',
+                        help="Directly download video, without further CLI interactions")
     return parser.parse_args(args)
 
 
@@ -67,12 +87,18 @@ def download(song=None, folder_path=None):
         return None
 
 def main():
-    path = check_args(sys.argv[1:]).output
+    screen_clear()
+    init_message()
+
+    default_path = check_args(sys.argv[1:]).default
+    config_default = config_settings(new_path=default_path)
+    path = check_args(sys.argv[1:], default=config_default).output
     try:
-        screen_clear()
-        init_message()
-        while True:
-            download(folder_path=path)
+        if check_args(sys.argv[1:]).video:
+            download(song=check_args(sys.argv[1:]).video, folder_path=path)
+        else:
+            while True:
+                download(folder_path=path)
     except KeyboardInterrupt:
         exit(1)
 
