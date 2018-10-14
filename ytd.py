@@ -36,6 +36,8 @@ def check_args(args=None, default=None):
                         help="Set default download directory")
     parser.add_argument('--video', '-v',
                         help="Directly download video, without further CLI interactions")
+    parser.add_argument('--playlist', '-p',
+                        help="Donwload an entire playlist")
     return parser.parse_args(args)
 
 
@@ -58,13 +60,12 @@ def exit_message(t):
     print("\n %s Has been downloaded" % t)
 
 
-def download(song=None, folder_path=None):
+def download(song=None, folder_path=None, playlist=False):
 
     ytdl_options = {
         'format': 'bestaudio/best', # select quality
         'outtmpl': "{}/%(title)s.%(ext)s".format(os.path.normpath(folder_path)),
-        'embed-thumbnail': True, # doesn't seem to work
-        'no-warnings': True,
+        'noplaylist': not playlist,
         'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
@@ -111,6 +112,8 @@ def main():
     try:
         if check_args(sys.argv[1:]).video:
             download(song=check_args(sys.argv[1:]).video, folder_path=path)
+        elif check_args(sys.argv[1:]).playlist:
+            download(song=check_args(sys.argv[1:]).playlist, folder_path=path, playlist=True)
         else:
             while True:
                 download(folder_path=path)
