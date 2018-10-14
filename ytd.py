@@ -78,7 +78,7 @@ def download(song=None, folder_path=None, playlist=False):
     def ytdl_download(song_url):
         with YoutubeDL(ytdl_options) as ytdl:
             try:
-                song_title = get_title(song)
+                song_title = get_title(song_url)
                 print("Downloading %s" % song_title)
                 ytdl.download([song_url])
                 exit_message(song_title)
@@ -95,11 +95,13 @@ def download(song=None, folder_path=None, playlist=False):
             query = encode({"search_query" : song})
             web_content = urlopen("http://www.youtube.com/results?" + query)
             results = re.findall(r'href=\"\/watch\?v=(.{11})', web_content.read().decode())
+            video_id  = results[0]
+            video_url = "https://youtube.com/watch?v=" + video_id
         except:
             print("There's some problem in your network")
             return None
 
-        ytdl_download(results[0])
+        ytdl_download(video_url)
 
     else:
         ytdl_download(song)
