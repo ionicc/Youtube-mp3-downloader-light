@@ -3,6 +3,7 @@ import urllib.request
 import urllib.parse
 import argparse
 import os, json
+from youtube_dl import YoutubeDL
 
 user_input = input
 encode = urllib.parse.urlencode
@@ -58,6 +59,30 @@ def exit_message(t):
 
 
 def download(song=None, folder_path=None):
+
+    ytdl_options = {
+        'format': 'bestaudio/best', # select quality
+        'outtmpl': "{}/%(title)s.%(ext)s".format(os.path.normpath(folder_path)),
+        'embed-thumbnail': True, # doesn't seem to work
+        'no-warnings': True,
+        'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }]
+    }
+
+    def ytdl_download(song_url):
+        with YoutubeDL(ytdl_options) as ytdl:
+            try:
+                song_title = get_title(song)
+                print("Downloading %s" % song_title)
+                ytdl.download([song_url])
+                exit_message(song_title)
+            except:
+                print('Error downloading %s' %song_title)
+                return None
+
     if not song:
         song = user_input('Enter the name of the song or the URL: ')
 
@@ -71,20 +96,10 @@ def download(song=None, folder_path=None):
             print("There's some problem in your network")
             return None
 
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}/%(title)s.%(ext)s" '.format(os.path.normpath(folder_path)) + results[0]
+        ytdl_download(results[0])
 
     else:
-        command = 'youtube-dl --embed-thumbnail --no-warnings --extract-audio --audio-format mp3 -o "{}/%(title)s.%(ext)s" '.format(os.path.normpath(folder_path)) + song[song.find("=")+1:]
-        song = get_title(song)
-        print(song)
-
-    try:
-        print("Downloading %s" % song)
-        os.system(command)
-        exit_message(song)
-    except:
-        print('Error downloading %s' %song)
-        return None
+        ytdl_download(song)
 
 def main():
     screen_clear()
