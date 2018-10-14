@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import re, urllib, os, sys
 import urllib.request
 import urllib.parse
