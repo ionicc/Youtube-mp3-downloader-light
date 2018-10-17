@@ -39,39 +39,10 @@ Window{
             placeholderText: qsTr("Search a video or type the URL.")
         }
 
-        Rectangle {
+        SearchButton {
             id: search_button
             x: 526
             y: 24
-            width: 25
-            height: 25
-            color: "#00000000"
-            radius: 2
-            border.width: 1
-
-            Image {
-                id: search_icon
-                x: 1
-                y: 1
-                width: 24
-                height: 24
-                source: "resources/icons/baseline_search_black_18dp.png"
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    console.log(url.text)
-                    if(url.text.indexOf("youtube.com") > 0) {
-                        console.log('caiu no if')
-                        browser.url = url.text
-                    }
-                    else {
-                        console.log('caiu no else')
-                        browser.url = "https://www.youtube.com/results?search_query=" + url.text
-                    }
-                }
-            }
         }
 
         WebView{
@@ -81,6 +52,14 @@ Window{
             width: 474
             height: 314
             url:""
+
+            onUrlChanged: {
+                if(browser.url.toString().indexOf("watch") > 0){
+                    console.log('o magrao clicou em algum video')
+                    url.text = browser.url
+                }
+
+            }
         }
 
         TextField {
@@ -92,31 +71,27 @@ Window{
             placeholderText: qsTr("Paste the path or select the destination folder.")
         }
 
-        Rectangle {
+        SelectFolderButton {
             id: select_folder_button
             x: 526
             y: 397
-            width: 25
-            height: 25
-            color: "#00000000"
-            radius: 2
-            border.width: 1
+        }
 
-            Image {
-                id: folder_icon
-                x: 1
-                y: 1
-                width: 24
-                height: 24
-                source: "resources/icons/baseline_folder_black_18dp.png"
+        FileDialog {
+            id: folder_selection
+            title: qsTr("Select the destination folder.")
+            folder: shortcuts.music
+            selectFolder: true
+
+            onAccepted: {
+                destination_path.text = folder_selection.folder.toString().replace("file:///", "")
             }
+        }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-
-                }
-            }
+        DownloadButton {
+            id: download_button
+            y: 427
+            x: 246
         }
     }
 }
