@@ -3,6 +3,7 @@ import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import QtWebView 1.1
 import QtQuick.Dialogs 1.2
+import QtQuick.Layouts 1.3
 
 Window{
     id: root
@@ -17,6 +18,7 @@ Window{
         y: 0
         width: 640
         height: 480
+        color: "#97d9ec"
         border.width: 0
         gradient: Gradient {
             GradientStop {
@@ -36,7 +38,7 @@ Window{
             y: 24
             width: 437
             height: 24
-            placeholderText: qsTr("Search a video or type the URL.")
+            placeholderText: qsTr("Search a video (or playlist) or type the URL.")
         }
 
         SearchButton {
@@ -90,8 +92,19 @@ Window{
 
         DownloadButton {
             id: download_button
+            visible: true
             y: 427
             x: 246
+        }
+
+        BusyIndicator {
+            id: download
+            x: 289
+            y: 422
+            height: 50
+            width: 50
+
+            running: false
         }
     }
 }

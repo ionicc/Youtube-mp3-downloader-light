@@ -18,7 +18,7 @@ Rectangle {
         y: 1
         width: 24
         height: 24
-        source: "resources/icons/baseline_folder_black_18dp.png"
+        source: "../resources/icons/baseline_folder_black_18dp.png"
     }
     
     MouseArea {

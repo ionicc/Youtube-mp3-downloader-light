@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>SearchButton.qml</file>
-        <file>SelectFolderButton.qml</file>
-        <file>DownloadButton.qml</file>
+        <file>qml/DownloadButton.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/SearchButton.qml</file>
+        <file>qml/SelectFolderButton.qml</file>
+        <file>resources/icons/baseline_cloud_download_black_18dp.png</file>
+        <file>resources/icons/baseline_folder_black_18dp.png</file>
+        <file>resources/icons/baseline_search_black_18dp.png</file>
     </qresource>
 </RCC>
