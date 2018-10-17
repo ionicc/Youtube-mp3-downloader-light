@@ -19,6 +19,15 @@ class DownloadManager(QObject):
 
         return 0
 
+class ConfigurationManager(QObject):
+    @pyqtSlot(result=str)
+    def getDefaultPath(self):
+        return ytd.config_settings()
+
+    @pyqtSlot(str)
+    def setDefaultPath(self, path):
+        return ytd.config_settings(new_path=path)
+
 if __name__ == "__main__":
     import sys
 
@@ -31,6 +40,9 @@ if __name__ == "__main__":
 
     downloadManager = DownloadManager()
     context.setContextProperty("downloadManager", downloadManager)
+
+    configurationManager = ConfigurationManager()
+    context.setContextProperty("configurationManager", configurationManager)
 
     engine.quit.connect(app.quit)
     sys.exit(app.exec_())

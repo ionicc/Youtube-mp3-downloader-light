@@ -71,6 +71,7 @@ Window{
             width: 437
             height: 24
             placeholderText: qsTr("Paste the path or select the destination folder.")
+            text: {configurationManager.getDefaultPath()}
         }
 
         SelectFolderButton {
@@ -87,6 +88,7 @@ Window{
 
             onAccepted: {
                 destination_path.text = folder_selection.folder.toString().replace("file:///", "")
+                configurationManager.setDefaultPath(destination_path.text)
             }
         }
 
