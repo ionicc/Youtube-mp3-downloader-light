@@ -30,7 +30,7 @@ Rectangle {
             }
 
             var download_music = function(){
-                var result = downloadManager.downloadMP3(url.text.toString(), destination_path.text)
+                var result = downloadManager.downloadSingleVideo(url.text.toString(), destination_path.text)
                 if(result === 0){
                     download_button.visible = true
                     download.running = false

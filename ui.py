@@ -7,12 +7,40 @@ import threading as tr
 import ytd
 
 def do_download(args):
-            ytd.download(song=args['url'], folder_path=args['path'])
+            ytd.download(song=args['url'],
+                         folder_path=args['path'],
+                         playlist=args['playlist'],
+                         playlist_items=args['playlist_items'],
+                         playlist_start=args['playlist_start'],
+                         playlist_end=args['playlist_end'])
 
 class DownloadManager(QObject):
     @pyqtSlot(str, str, result=int)
-    def downloadMP3(self, url, path):
-        args = {'url': url, 'path': path}
+    def downloadSingleVideo(self, url, path):
+        args = {
+            'url': url,
+            'path': path,
+            'playlist': False,
+            'playlist_items': None,
+            'playlist_start': None,
+            'playlist_end': None
+        }
+
+        t = tr.Thread(target=do_download, args=(args,))
+        t.start()
+
+        return 0
+
+    @pyqtSlot(str, str, list, int, int, result=int)
+    def downloadPlaylist(self, url, path, playlist_items, playlist_start, playlist_end):
+        args = {
+            'url': url,
+            'path': path,
+            'playlist': True,
+            'playlist_items': playlist_items,
+            'playlist_start': playlist_start,
+            'playlist_end': playlist_end
+        }
 
         t = tr.Thread(target=do_download, args=(args,))
         t.start()

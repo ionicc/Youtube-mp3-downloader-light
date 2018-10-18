@@ -57,10 +57,10 @@ Window{
 
             onUrlChanged: {
                 if(browser.url.toString().indexOf("watch") > 0){
-                    console.log('o magrao clicou em algum video')
+                    url.text = browser.url
+                } else if (browser.url.toString().indexOf("list") > 0) {
                     url.text = browser.url
                 }
-
             }
         }
 
