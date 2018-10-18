@@ -8,55 +8,50 @@
 
 This project has been made for educational purposes using python language and does not support or encourage pirating activities.
 
+---
+
 ## Installation
 
-### Linux and MacOS:
-
-1. Clone this repository
+**1. Clone this repository**
    ```
    $ git clone https://github.com/ionicc/Youtube-mp3-downloader-light
    $ cd Youtube-mp3-downloader-light
    ```
 
-2. Install
+**2. Setup**
 
-   ```
+### Linux and MacOS:
+   ```bash
    $ make install
    ```
 
    or,
    >To install for development:
-   ```
+   ```bash
    $ make install-dev
    ```
 
-
-3. Run the ytd.py file
-
-   ```
-   ./ytd.py
-   ```
-
 ### Windows:
+   >If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above.
+   >Else, you need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system, then:
 
-1. Clone this Repository.
+   - Unzip the archive to a specified directory. e.g.: ```C:\libs\ffmpeg```.
+   - Add ffmpeg to your PATH
+   ```cmd
+    setx path "%PATH%;C:\libs\ffmpeg\bin"
+   ```
 
-2. Set the folder as an environment path variable.
 
-3. Make a folder in the location you want to download the songs in.
+## Launch
+   ```bash
+   $ ./ytd.py    # launch in interactive mode
+   ```
 
-4. Open PowerShell in that location.
+---
 
-   1. Click on the path of the folder.
-   2. Type in **`ytd.py -o --playlist PLAYLIST_LINK`** to download the entire playlist.
+### Launch Options
 
-5. **To download individual songs**
-
-   1. Open CMD at the Repository's location.
-      1. Type **`python ydl.py`**  - This will run the script.
-   2. Paste the link of the song. It will download it. 
-
-**To download the songs, follow these commands :-**
+Supported flags are explained below:
 
 | Command                                                                                                                                                                                              | Function                                                                                           |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -96,9 +91,3 @@ This project has been made for educational purposes using python language and do
 10. --default :- Downloads at the default download location. Usually the **downloads** folder.
 
 11. --default/Folder_Location :- Changes the default download path. Downloads at that path if a playlist is queued.
-
-#### Errors :-
-
-**For Windows :-**
-
-If you encounter Couldn't find FF Probe or AV Probe error, try to download [FFmpeg](https://ffmpeg.zeranoe.com/builds/). Traverse to the file location and open the **bin** folder and set that location as an environment path. That should solve the issue.
