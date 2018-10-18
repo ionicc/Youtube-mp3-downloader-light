@@ -8,17 +8,28 @@
 
 This project has been made for educational purposes using python language and does not support or encourage pirating activities.
 
-## Usage
+## Installation
 
 ### Linux and MacOS:
 
-1. Get the youtube-dl package
+1. Clone this repository
+   ```
+   $ git clone https://github.com/ionicc/Youtube-mp3-downloader-light
+   $ cd Youtube-mp3-downloader-light
+   ```
+
+2. Install
 
    ```
-   $ sudo apt-get install youtube-dl
+   $ make install
    ```
 
-2. Clone and extract the repository
+   or,
+   >To install for development:
+   ```
+   $ make install-dev
+   ```
+
 
 3. Run the ytd.py file
 
