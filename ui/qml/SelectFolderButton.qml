@@ -5,13 +5,18 @@ import QtWebView 1.1
 import QtQuick.Dialogs 1.2
 
 Rectangle {
+    function onClickHandler() {
+        folder_selection.visible = true
+    }
+
     id: select_folder_button
     width: 25
     height: 25
     color: "#00000000"
     radius: 2
     border.width: 1
-    
+    border.color: focus ? "blue" : "black"
+
     Image {
         id: folder_icon
         x: 1
@@ -24,7 +29,15 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            folder_selection.visible = true
+            onClickHandler()
         }
+    }
+
+    Keys.onEscapePressed: {
+        onClickHandler()
+    }
+
+    Keys.onTabPressed: {
+        download_button.forceActiveFocus()
     }
 }

@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2
 import QtWebView 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
+import QtWebEngine 1.5
 
 Window{
     id: root
@@ -39,6 +40,14 @@ Window{
             width: 437
             height: 24
             placeholderText: qsTr("Search a video (or playlist) or type the URL.")
+
+            onAccepted: {
+                search_button.executeSearch()
+            }
+
+            Keys.onTabPressed: {
+                search_button.forceActiveFocus()
+            }
         }
 
         SearchButton {
@@ -47,7 +56,7 @@ Window{
             y: 24
         }
 
-        WebView{
+        WebEngineView{
             id: browser
             x: 77
             y: 66
@@ -55,10 +64,14 @@ Window{
             height: 314
             url:""
 
+            profile:  WebEngineProfile {
+                httpUserAgent: "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"
+            }
+
             onUrlChanged: {
                 if(browser.url.toString().indexOf("watch") > 0){
                     url.text = browser.url
-                } else if (browser.url.toString().indexOf("list") > 0) {
+                } else if (browser.url.toString().indexOf("playlist") > 0) {
                     url.text = browser.url
                 }
             }
@@ -72,6 +85,10 @@ Window{
             height: 24
             placeholderText: qsTr("Paste the path or select the destination folder.")
             text: {configurationManager.getDefaultPath()}
+
+            Keys.onTabPressed: {
+                select_folder_button.forceActiveFocus()
+            }
         }
 
         SelectFolderButton {
