@@ -7,6 +7,14 @@ import QtQuick.Layouts 1.3
 import QtWebEngine 1.5
 
 Window{
+    function delay(delayTime, cb) {
+        var timer = Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
+
     id: root
     visible: true
     width: 640
@@ -40,6 +48,7 @@ Window{
             width: 437
             height: 24
             placeholderText: qsTr("Search a video (or playlist) or type the URL.")
+            selectByMouse: true
 
             onAccepted: {
                 search_button.executeSearch()
@@ -85,6 +94,7 @@ Window{
             height: 24
             placeholderText: qsTr("Paste the path or select the destination folder.")
             text: {configurationManager.getDefaultPath()}
+            selectByMouse: true
 
             Keys.onTabPressed: {
                 select_folder_button.forceActiveFocus()
@@ -124,6 +134,10 @@ Window{
             width: 50
 
             running: false
+        }
+
+        PlaylistVideosSelectorDialog {
+            id: playlist_videos_selector_dialog
         }
     }
 }

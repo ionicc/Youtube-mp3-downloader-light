@@ -37,6 +37,10 @@ Rectangle {
         onClickHandler()
     }
 
+    Keys.onEnterPressed: {
+        onClickHandler()
+    }
+
     Keys.onTabPressed: {
         download_button.forceActiveFocus()
     }

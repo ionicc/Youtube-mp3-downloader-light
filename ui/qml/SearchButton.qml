@@ -47,4 +47,8 @@ Rectangle {
     Keys.onEscapePressed: {
         executeSearch()
     }
+
+    Keys.onEnterPressed: {
+        executeSearch()
+    }
 }

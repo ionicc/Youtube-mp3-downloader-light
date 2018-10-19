@@ -31,17 +31,34 @@ class DownloadManager(QObject):
 
         return 0
 
-    @pyqtSlot(str, str, list, int, int, result=int)
+    @pyqtSlot(str, str, str, int, int, result=int)
     def downloadPlaylist(self, url, path, playlist_items, playlist_start, playlist_end):
+        # pyqtSlot don't give us None values
+        # if the type is int we have 0
+        # if the type is str we have ''
+        # due to this fact we need to test the params
+        start = playlist_start
+        if start == 0:
+            start = 1
+
+        end = playlist_end
+        if end == 0:
+            end = None
+
+        items = playlist_items
+        if items == '':
+            items = None
+
         args = {
             'url': url,
             'path': path,
             'playlist': True,
-            'playlist_items': playlist_items,
-            'playlist_start': playlist_start,
-            'playlist_end': playlist_end
+            'playlist_items': items,
+            'playlist_start': start,
+            'playlist_end': end
         }
-
+        print('args: ')
+        print(args)
         t = tr.Thread(target=do_download, args=(args,))
         t.start()
 

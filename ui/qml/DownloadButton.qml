@@ -2,26 +2,36 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.3
 
 Rectangle {
-    function onClickHandler(){
-        var delay = function(delayTime, cb) {
-            var timer = Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
-            timer.interval = delayTime;
-            timer.repeat = false;
-            timer.triggered.connect(cb);
-            timer.start();
-        }
-
-        var downloadSingleVideo = function(){
-            var result = downloadManager.downloadSingleVideo(url.text.toString(), destination_path.text)
-            if(result === 0){
-                visible = true
-                download.running = false
-            }
-        }
-
+    function hideAndShowBusyIndicator() {
         visible = false
         download.running = true
-        delay(3000, downloadSingleVideo)
+    }
+
+    function showAndHideBusyIndicator() {
+        visible = true
+        download.running = false
+    }
+
+    function downloadSingleVideo(url, path){
+        var result = downloadManager.downloadSingleVideo(url, path)
+        if(result === 0){
+            showAndHideBusyIndicator()
+        }
+    }
+
+    function downloadPlaylist(url, path, playlist_items, playlist_start, playlist_end){
+        var result = downloadManager.downloadPlaylist(url, path, playlist_items, playlist_start, playlist_end)
+    }
+
+    function onClickHandler(){
+        if (browser.url.toString().indexOf("playlist") > 0) {
+            playlist_videos_selector_dialog.show()
+        } else {
+            hideAndShowBusyIndicator()
+            delay(3000, function(){
+                downloadSingleVideo(url.text.toString(), destination_path.text)
+            })
+        }
     }
 
     width: 120
@@ -49,6 +59,10 @@ Rectangle {
     }
 
     Keys.onEscapePressed: {
+        onClickHandler()
+    }
+
+    Keys.onEnterPressed: {
         onClickHandler()
     }
 }

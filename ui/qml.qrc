@@ -7,5 +7,6 @@
         <file>resources/icons/baseline_cloud_download_black_18dp.png</file>
         <file>resources/icons/baseline_folder_black_18dp.png</file>
         <file>resources/icons/baseline_search_black_18dp.png</file>
+        <file>qml/PlaylistVideosSelectorDialog.qml</file>
     </qresource>
 </RCC>
