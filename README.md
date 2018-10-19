@@ -2,50 +2,64 @@
 
 **YTDL is a python script to download songs from Youtube :heart: , It has been written in under 70 lines of code! :triumph:**
 
-
-
 ### Disclaimer
 
 This project has been made for educational purposes using python language and does not support or encourage pirating activities.
 
 ---
 
+
+
+## Contributors
+
+Started as a fun project, **YTDL** is at it's current because of contributions from amazing people all over the world.
+
+\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/0)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/0)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/1)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/1)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/2)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/2)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/3)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/3)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/4)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/4)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/5)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/5)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/6)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/6)\[!\[\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/7)\](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/7)
+
+
+
 ## Installation
 
 **1. Clone this repository**
-   ```
+
+```
    $ git clone https://github.com/ionicc/Youtube-mp3-downloader-light
    $ cd Youtube-mp3-downloader-light
-   ```
+```
 
 **2. Setup**
 
 ### Linux and MacOS:
-   ```bash
+
+```bash
    $ make install
-   ```
+```
 
    or,
-   >To install for development:
-   ```bash
-   $ make install-dev
-   ```
+
+> To install for development:
+> 
+> ```bash
+>    $ make install-dev
+> ```
 
 ### Windows:
-   >If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above.
-   >Else, you need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system, then:
 
-   - Unzip the archive to a specified directory. e.g.: ```C:\libs\ffmpeg```.
-   - Add ffmpeg to your PATH
-   ```cmd
-    setx path "%PATH%;C:\libs\ffmpeg\bin"
-   ```
+> If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above.
+Else, you need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system, then:
 
+- Unzip the archive to a specified directory. e.g.: ```C:\libs\ffmpeg```.
+- Add ffmpeg to your PATH
+
+  ```cmd
+  setx path "%PATH%;C:\libs\ffmpeg\bin"
+  ```
 
 ## Launch
-   ```bash
+
+```bash
    $ ./ytd.py    # launch in interactive mode
-   ```
+```
 
 ---
 
@@ -54,7 +68,7 @@ This project has been made for educational purposes using python language and do
 Supported flags are explained below:
 
 | Command                                                                                                                                                                                              | Function                                                                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ytd.py -o --playlist PLAYLIST_LINK`                                                                                                                                                                 | Downloads the entire playlist in the cwd.                                                          |
 | `ytd.py -o --playlist PLAYLIST_LINK --playlist-start song_Number<br/>ytd.py -o --playlist PLAYLIST_LINK --ps Song_Number`                                                                            | Downloads the entire playlist in the cwd from the specified song serial number in the playlist.    |
 | `ytd.py -o --playlist PLAYLIST_LINK --playlist-end Song_Number<br/>ytd.py -o --playlist PLAYLIST_LINK --pe song_Number`                                                                              | Downloads the playlist in the cwd and stops downloading when it reaches the mentioned song number. |
@@ -70,24 +84,16 @@ Supported flags are explained below:
 
 #### **Argument Explanation :-**
 
-1. ytd.py :- The name of the python script. It is used to call the script in PowerShell.
+1. `-o or --output`:-  Define the output location for the current session.
 
-2. -o :- prints the output for the iteration of the current shell.
+2. `--video or -v` :- Downloads the video.
 
-3. PLAYLIST_LINK :- It is the link to the playlist you want to download.
+3. `--playlist` :- Playlist URL.
 
-4. --playlist-start :- It defines the starting point of the playlist.
+4. `--playlist-start or -ps` : Define the starting point of the playlist.
 
-5. --ps :- Shortform for --playlist-start.
+5. `--playlist-end or -pe` :- Define the end point of the playlist.
 
-6. --playlist-end :- It defines the end point of the playlist.
+6. `--playlist-items or -pi` :- This command downloads the songs at the mentioned serial numbers.
 
-7. --pe :- Shortform for --playlist-end.
-
-8. --playlist-items no1,no2,no3 :- This command downloads the songs at the mentioned serial numbers.
-
-9. --pi :- Shortform for --playlist-items.
-
-10. --default :- Downloads at the default download location. Usually the **downloads** folder.
-
-11. --default/Folder_Location :- Changes the default download path. Downloads at that path if a playlist is queued.
+7. `--default` :- Define the default download location.
