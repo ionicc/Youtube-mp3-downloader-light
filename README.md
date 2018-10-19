@@ -44,15 +44,22 @@ Started as a fun project, **YTDL** is at it's current because of contributions 
 
 ### Windows:
 
-> If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above.
-Else, you need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system, then:
+> If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above. <br/>
+> Else, open an admin shell in the project folder, and execute:
+
+```cmd
+> .\install.bat
+```
+
+After the setup, you'll need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system.
+Then:
 
 - Unzip the archive to a specified directory. e.g.: ```C:\libs\ffmpeg```.
-- Add ffmpeg to your PATH
+- Add ffmpeg to your `PATH`
 
-  ```cmd
-  setx path "%PATH%;C:\libs\ffmpeg\bin"
-  ```
+```cmd
+> setx path "%PATH%;C:\libs\ffmpeg\bin"
+```
 
 ## Launch
 
