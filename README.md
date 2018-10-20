@@ -1,6 +1,6 @@
 # Youtube-Downloader-Light
 
-**YTDL is a wrapper around the [youtube_dl](https://github.com/rg3/youtube-dl) package to download **primarily audio** and video from Youtube easily :heart:
+**YTDL** is a wrapper around the [youtube_dl](https://github.com/rg3/youtube-dl) package to download **primarily audio** and video from Youtube easily :heart:
 
 ### Disclaimer
 
