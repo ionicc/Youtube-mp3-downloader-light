@@ -1,6 +1,6 @@
 # Youtube-Downloader-Light
 
-**YTDL is a python script to download songs from Youtube :heart: , It has been written in under 70 lines of code! :triumph:**
+**YTDL is a wrapper around the [youtube_dl](https://github.com/rg3/youtube-dl) package to download **primarily audio** and video from Youtube easily :heart:
 
 ### Disclaimer
 
