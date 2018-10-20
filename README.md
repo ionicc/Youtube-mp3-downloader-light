@@ -71,7 +71,25 @@ Then:
 
 ### Launch Options
 
+
+### **GUI**
+### 1. Install pyQt5
+
+**With Conda:**
+1. Create new conda environment:  `conda create -n my_new_env python=3.7`
+2. Install pyqt:  `conda install -c defaults pyqt=5 qt`
+
+#### With pip
+`pip3 install pyqt5`
+
+### 2. Run
+1. Follow the steps above for Windows or Linux
+2. Go to the folder then run: `python ui.py`
+
+**To download the songs, follow these commands :-**
+=======
 Supported flags are explained below:
+
 
 | Command                                                                                                                                                                                              | Function                                                                                           |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
