@@ -1,0 +1,4 @@
+# specifies development-specific requirements
+
+-r common.txt
+pytest

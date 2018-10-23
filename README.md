@@ -1,49 +1,98 @@
 # Youtube-Downloader-Light
 
-**YTDL is a python script to download songs from Youtube :heart: , It has been written in under 70 lines of code! :triumph:**
+
+**YTDL** is a wrapper around the [youtube_dl](https://github.com/rg3/youtube-dl) package to download **primarily audio** and video from Youtube easily :heart:
+
 
 ### Disclaimer
 
 This project has been made for educational purposes using python language and does not support or encourage pirating activities.
 
-## Usage
+---
+
+
+
+## Contributors
+
+Started as a fun project, **YTDL** is at it's current because of contributions from amazing people all over the world.
+
+[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/0)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/0)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/1)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/1)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/2)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/2)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/3)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/3)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/4)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/4)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/5)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/5)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/6)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/6)[![](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/images/7)](https://sourcerer.io/fame/ionicc/ionicc/Youtube-mp3-downloader-light/links/7)
+
+
+## Installation
+
+**1. Clone this repository**
+
+```
+   $ git clone https://github.com/ionicc/Youtube-mp3-downloader-light
+   $ cd Youtube-mp3-downloader-light
+```
+
+**2. Setup**
 
 ### Linux and MacOS:
 
-1. Get the youtube-dl package
+```bash
+   $ make install
+```
 
-   ```
-   $ sudo apt-get install youtube-dl
-   ```
+   or,
 
-2. Clone and extract the repository
-
-3. Run the ytd.py file
-
-   ```
-   ./ytd.py
-   ```
+> To install for development:
+> 
+> ```bash
+>    $ make install-dev
+> ```
 
 ### Windows:
 
-1. Clone this Repository.
+> If you use [make](http://gnuwin32.sourceforge.net/packages/make.htm), follow the steps above. <br/>
+> Else, open an admin shell in the project folder, and execute:
 
-2. Set the folder as an environment path variable.
+```cmd
+> .\install.bat
+```
 
-3. Make a folder in the location you want to download the songs in.
+After the setup, you'll need to download [ffmpeg](https://ffmpeg.zeranoe.com/builds/) for your system.
+Then:
 
-4. Open PowerShell in that location.
+- Unzip the archive to a specified directory. e.g.: ```C:\libs\ffmpeg```.
+- Add ffmpeg to your `PATH`
 
-   1. Click on the path of the folder.
-   2. Type in **`ytd.py -o --playlist PLAYLIST_LINK`** to download the entire playlist.
+```cmd
+> setx path "%PATH%;C:\libs\ffmpeg\bin"
+```
 
-5. **To download individual songs**
+## Launch
 
-   1. Open CMD at the Repository's location.
-      1. Type **`python ydl.py`**  - This will run the script.
-   2. Paste the link of the song. It will download it. 
+```bash
+   $ ./ytd.py    # launch in interactive mode
+```
+
+---
+
+### Launch Options
+
+
+### **GUI**
+### 1. Install pyQt5
+
+**With Conda:**
+1. Create new conda environment:  `conda create -n my_new_env python=3.7`
+2. Install pyqt:  `conda install -c defaults pyqt=5 qt`
+
+#### With pip
+`pip3 install pyqt5`
+
+### 2. Run
+1. Follow the steps above for Windows or Linux
+2. Go to the folder then run: `python ui.py`
 
 **To download the songs, follow these commands :-**
+
+Supported flags are explained below:
+
+
 
 | Command                                                                                                 | Function                                                                                           |
 | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -54,6 +103,7 @@ This project has been made for educational purposes using python language and do
 | `ytd.py -o --playlist PLAYLIST_LINK --default`                                                          | Downloads the playlist at the default location, the Downloads folder initially.                    |
 | `ytd.py -o --playlist PLAYLIST_LINK --default/Folder_Name`                                              | Sets a new download location and downloads the playlist there.                                     |
 
+
 #### You can use multiple arguments as well, for example, :-
 
 | Command                                                                                                                | Function                                                                                                      |
@@ -62,30 +112,16 @@ This project has been made for educational purposes using python language and do
 
 #### **Argument Explanation :-**
 
-1. ytd.py :- The name of the python script. It is used to call the script in PowerShell.
+1. `-o or --output`:-  Define the output location for the current session.
 
-2. -o :- prints the output for the iteration of the current shell.
+2. `--video or -v` :- Downloads the video.
 
-3. PLAYLIST_LINK :- It is the link to the playlist you want to download.
+3. `--playlist` :- Playlist URL.
 
-4. --playlist-start :- It defines the starting point of the playlist.
+4. `--playlist-start or -ps` : Define the starting point of the playlist.
 
-5. --ps :- Shortform for --playlist-start.
+5. `--playlist-end or -pe` :- Define the end point of the playlist.
 
-6. --playlist-end :- It defines the end point of the playlist.
+6. `--playlist-items or -pi` :- This command downloads the songs at the mentioned serial numbers.
 
-7. --pe :- Shortform for --playlist-end.
-
-8. --playlist-items no1,no2,no3 :- This command downloads the songs at the mentioned serial numbers.
-
-9. --pi :- Shortform for --playlist-items.
-
-10. --default :- Downloads at the default download location. Usually the **downloads** folder.
-
-11. --default/Folder_Location :- Changes the default download path. Downloads at that path if a playlist is queued.
-
-#### Errors :-
-
-**For Windows :-**
-
-If you encounter Couldn't find FF Probe or AV Probe error, try to download [FFmpeg](https://ffmpeg.zeranoe.com/builds/). Traverse to the file location and open the **bin** folder and set that location as an environment path. That should solve the issue.
+7. `--default` :- Define the default download location.
