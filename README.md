@@ -2,8 +2,6 @@
 
 **YTDL is a python script to download songs from Youtube :heart: , It has been written in under 70 lines of code! :triumph:**
 
-
-
 ### Disclaimer
 
 This project has been made for educational purposes using python language and does not support or encourage pirating activities.
@@ -47,14 +45,14 @@ This project has been made for educational purposes using python language and do
 
 **To download the songs, follow these commands :-**
 
-| Command                                                                                                                                                                                              | Function                                                                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ytd.py -o --playlist PLAYLIST_LINK`                                                                                                                                                                 | Downloads the entire playlist in the cwd.                                                          |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-start song_Number<br/>ytd.py -o --playlist PLAYLIST_LINK --ps Song_Number`                                                                            | Downloads the entire playlist in the cwd from the specified song serial number in the playlist.    |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-end Song_Number<br/>ytd.py -o --playlist PLAYLIST_LINK --pe song_Number`                                                                              | Downloads the playlist in the cwd and stops downloading when it reaches the mentioned song number. |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-items  song_Number-1, Song_Number-2, ..., Song_Number-x<br/>ytd.py -o --playlist PLAYLIST_LINK --pi song_Number-1, Song_Number-2, ..., Song_Number-x` | Downloads the songs at the positions of the mentioned serial numbers.                              |
-| `ytd.py -o --playlist PLAYLIST_LINK --default`                                                                                                                                                       | Downloads the playlist at the default location, the Downloads folder initially.                    |
-| `ytd.py -o --playlist PLAYLIST_LINK --default/Folder_Name`                                                                                                                                           | Sets a new download location and downloads the playlist there.                                     |
+| Command                                                                                                 | Function                                                                                           |
+| ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ytd.py -o --playlist PLAYLIST_LINK`                                                                    | Downloads the entire playlist in the cwd.                                                          |
+| `ytd.py -o --playlist PLAYLIST_LINK --playlist-start song_Number`                                       | Downloads the entire playlist in the cwd from the specified song serial number in the playlist.    |
+| `ytd.py -o --playlist PLAYLIST_LINK --playlist-end Song_Number`                                         | Downloads the playlist in the cwd and stops downloading when it reaches the mentioned song number. |
+| `ytd.py -o --playlist PLAYLIST_LINK --playlist-items  song_Number-1, Song_Number-2, ..., Song_Number-x` | Downloads the songs at the positions of the mentioned serial numbers.                              |
+| `ytd.py -o --playlist PLAYLIST_LINK --default`                                                          | Downloads the playlist at the default location, the Downloads folder initially.                    |
+| `ytd.py -o --playlist PLAYLIST_LINK --default/Folder_Name`                                              | Sets a new download location and downloads the playlist there.                                     |
 
 #### You can use multiple arguments as well, for example, :-
 
