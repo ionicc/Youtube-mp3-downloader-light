@@ -96,19 +96,19 @@ Supported flags are explained below:
 
 | Command                                                                                                 | Function                                                                                           |
 | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ytd.py -o --playlist PLAYLIST_LINK`                                                                    | Downloads the entire playlist in the cwd.                                                          |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-start song_Number`                                       | Downloads the entire playlist in the cwd from the specified song serial number in the playlist.    |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-end Song_Number`                                         | Downloads the playlist in the cwd and stops downloading when it reaches the mentioned song number. |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-items  song_Number-1, Song_Number-2, ..., Song_Number-x` | Downloads the songs at the positions of the mentioned serial numbers.                              |
-| `ytd.py -o --playlist PLAYLIST_LINK --default`                                                          | Downloads the playlist at the default location, the Downloads folder initially.                    |
-| `ytd.py -o --playlist PLAYLIST_LINK --default/Folder_Name`                                              | Sets a new download location and downloads the playlist there.                                     |
+| `ytd.py -o . --playlist PLAYLIST_LINK`                                                                    | Downloads the entire playlist in the cwd.                                                          |
+| `ytd.py -o . --playlist PLAYLIST_LINK --playlist-start song_Number`                                       | Downloads the entire playlist in the cwd from the specified song serial number in the playlist.    |
+| `ytd.py -o . --playlist PLAYLIST_LINK --playlist-end Song_Number`                                         | Downloads the playlist in the cwd and stops downloading when it reaches the mentioned song number. |
+| `ytd.py -o . --playlist PLAYLIST_LINK --playlist-items  song_Number-1, Song_Number-2, ..., Song_Number-x` | Downloads the songs at the positions of the mentioned serial numbers.                              |
+| `ytd.py -o . --playlist PLAYLIST_LINK --default`                                                          | Downloads the playlist at the default location, the Downloads folder initially.                    |
+| `ytd.py -o . --playlist PLAYLIST_LINK --default /Folder_Name`                                              | Sets a new download location and downloads the playlist there.                                     |
 
 
 #### You can use multiple arguments as well, for example, :-
 
 | Command                                                                                                                | Function                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `ytd.py -o --playlist PLAYLIST_LINK --playlist-end Song_Number --playlist-start song_Number --default/Folder_Location` | Downloads the playlist from the start song number to the end song number at the newly assigned download path. |
+| `ytd.py -o . --playlist PLAYLIST_LINK --playlist-end Song_Number --playlist-start song_Number --default/Folder_Location` | Downloads the playlist from the start song number to the end song number at the newly assigned download path. |
 
 #### **Argument Explanation :-**
 
