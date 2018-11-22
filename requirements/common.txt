@@ -1,3 +1,4 @@
 # specifies dependencies common to production and development environments
 
 urllib
+pyqt5
